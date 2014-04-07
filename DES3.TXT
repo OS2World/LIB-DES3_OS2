@@ -1,0 +1,24 @@
+Title:      DES3_OS2 - IBM OS/2 WARP library for the NBS Data Encryption 
+            Standard (DES) with support of triple-length keys (3DES). 
+
+Language:   ANSI C + ASSEMBLER
+
+Copyright:  (C) 1992-96 by Stefan Wolf Software
+
+License:    No fee for non-commercial use. License for commercial use
+            available on request from:
+
+                            Stefan Wolf Software
+                Gartenstr. 22; D-61449 Steinbach/Ts.; Germany
+            FON/FAX: +49 (0) 6171 980483; BBS: +49 (0) 69 5075592
+
+Supported
+Platforms:  DOS, Win16, Win32, OS/2, AIX, HP/UX, DG/UX, LINUX, SunOS, IRIX 
+
+Abstract:   Data Encryption Standard (DES) - ANSI Standard X3.92-1981
+            The library modules perform the DES algorithm to encode and 
+            decode data in 64-bit Electronic Code Book (ECB) or Cipher 
+            Block Chaining (CBC) mode.
+            
+Import/Export
+Restrictions: None

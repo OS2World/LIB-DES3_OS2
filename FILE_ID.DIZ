@@ -1,0 +1,11 @@
+
+DES3_OS2 -  OS/2 WARP library for the 
+NBS Data Encryption Standard (DES) in 
+ECB  and  CBC mode with support of 24 
+byte keys (3DES). Simple-to-use C API
+to the cryptograhic functions. Sample
+make files and  source code of a file
+encryption utility to show their use. 
+ANSI Standard X3.92-1981! Outstanding 
+performance of 270 KB/s (i486DX/33) ! 
+Free 4 private! Protect Your Privacy!

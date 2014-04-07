@@ -1,0 +1,11 @@
+NAME        OS2VALID
+DESCRIPTION 'Validates the NBS DES Algorithm'
+CODE        PRELOAD MOVEABLE 
+DATA        PRELOAD MOVEABLE
+HEAPSIZE    1024
+STACKSIZE   8192
+IMPORTS     des3os2.desinit
+            des3os2.ecbencode
+            des3os2.ecbdecode
+            des3os2.cbcencode
+            des3os2.cbcdecode                

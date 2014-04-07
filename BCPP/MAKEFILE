@@ -1,0 +1,88 @@
+# Makefile for Borland C++ for OS/2
+DRIVE   = H:
+VERSION = 15
+SRCPATH = ..
+BINPATH = $(DRIVE)\OS2DEV\BC$(VERSION)\BIN
+LIBPATH = $(DRIVE)\OS2DEV\BC$(VERSION)\LIB
+INCPATH = $(DRIVE)\OS2DEV\BC$(VERSION)\INCLUDE
+#
+CC      = $(BINPATH)\BCC
+HC      = $(BINPATH)\HC
+RC      = $(BINPATH)\BRCC
+RB      = $(BINPATH)\RC
+TLINK   = $(BINPATH)\TLINK
+TASM    = $(BINPATH)\TASM
+TLIB    = $(BINPATH)\TLIB                                    
+IMPLIB  = $(BINPATH)\IMPLIB
+#
+CCFLAGS  = -w -O2 -H -P-c -I$(INCPATH) -I$(SRCPATH) 
+#
+OS2DEFS  = -DOS2 -DASM
+#
+OS2LIBS   = C2.LIB OS2.LIB  
+#
+LDPM      = $(TLINK) -x -Toe -aa -L$(LIBPATH)
+LDEXE     = $(TLINK) -x -Toe -ap -L$(LIBPATH)
+LDDLL     = $(TLINK) -x -Tod -ap -L$(LIBPATH)
+#
+
+all: des.exe bench.exe testcbc.exe testecb.exe os2valid.exe 
+
+os2valid.exe : os2valid.obj des3os2.lib
+        $(LDPM) c02 os2valid,os2valid,,$(OS2LIBS),$(SRCPATH)\os2valid
+        @if exist os2valid.obj del os2valid.obj
+
+os2valid.obj: $(SRCPATH)/os2valid.c $(SRCPATH)/des3.h
+        $(CC) $(CCFLAGS) $(OS2DEFS) -oos2valid.obj -c $(SRCPATH)/os2valid.c
+
+des3os2.lib: des3os2.dll
+        $(IMPLIB) des3os2.lib des3os2.dll
+
+#des3os2.dll: des3.obj 
+#     	$(LDDLL) c02d des3, des3os2,,$(OS2LIBS),$(SRCPATH)\des3os2
+#       @if exist des3.obj del des3.obj
+
+testecb.exe : testecb.obj des3.lib
+        $(LDEXE) c02 testecb,testecb,,DES3.LIB $(OS2LIBS) 
+        @if exist testecb.obj del testecb.obj
+
+testecb.obj: $(SRCPATH)/testecb.c $(SRCPATH)/des3.h
+        $(CC) $(CCFLAGS) $(OS2DEFS) -otestecb.obj -c $(SRCPATH)/testecb.c
+
+testcbc.exe : testcbc.obj des3.lib
+        $(LDEXE) c02 testcbc, testcbc,,DES3.LIB $(OS2LIBS) 
+        @if exist testcbc.obj del testcbc.obj
+
+testcbc.obj: $(SRCPATH)/testcbc.c $(SRCPATH)/des3.h
+        $(CC) $(CCFLAGS) $(OS2DEFS) -otestcbc.obj -c $(SRCPATH)/testcbc.c
+
+bench.exe: bench.obj des3.lib
+        $(LDEXE) c02 bench, bench,, DES3.LIB $(OS2LIBS) 
+        @if exist bench.obj del bench.obj
+
+bench.obj: $(SRCPATH)/bench.c $(SRCPATH)/des3.h
+        $(CC) $(CCFLAGS) $(OS2DEFS)  -obench.obj -c $(SRCPATH)/bench.c
+
+des.exe: des.obj des3.lib
+        $(LDEXE) c02 des, des,,DES3.LIB $(OS2LIBS)
+        @if exist des.obj del des.obj
+
+des.obj: $(SRCPATH)/des.c $(SRCPATH)/des3.h
+        $(CC) $(CCFLAGS) $(OS2DEFS) -odes.obj -c $(SRCPATH)/des.c
+
+#des3.lib: des3.obj
+#       @if exist des3.lib del des3.lib
+#       $(TLIB) des3.lib /C /E + des3.obj 
+
+#des3.obj: $(SRCPATH)\des3.c $(SRCPATH)\tables.h
+#     	$(CC) $(CCFLAGS) $(OS2DEFS) -odes3.obj -c $(SRCPATH)\des3.c
+                                                                    
+clean:            
+#       @if exist *.map del *.map
+#       @if exist *.lib del *.lib
+       	@if exist *.obj del *.obj
+       	@if exist *.exe del *.exe
+        @if exist *.bak del *.bak
+#      	@if exist *.dll del *.dll
+#       @if exist *.res del *.res
+                                                                    

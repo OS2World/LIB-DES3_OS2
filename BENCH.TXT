@@ -1,0 +1,42 @@
+Some average benchmark results for single DES in ECB mode (ecbencode()).
+
+System                                 CC                        Bytes/sec
+
+i486DX33, DOS 6.22                     bcc -O2 -ms                ~ 177000
+i486DX33, OS/2 WARP                    bcc -O2                    ~ 270000
+i586/90 , DOS 6.22                     bcc -O2 -ms                ~ 622000
+i586/133, DOS 6.22                     bcc -O2 -ms                ~ 932000
+
+i586/100 , LINUX                       gcc -O                     ~1080000
+
+IBM RS6000/220 , AIX 3.2.5             xlc -O                     ~ 320000
+IBM RS6000/320 , AIX 3.2.5             xlc -O2 -qtune=pwr         ~ 236000
+IBM RS6000/320H, AIX 3.2.5             xlc -O                     ~ 290000
+IBM RS6000/340 , AIX 3.2.5             xlc -O                     ~ 382000
+IBM RS6000/520 , AIX 3.2.5             xlc -O                     ~ 186000
+IBM RS6000/530 , AIX 3.2.5             xlc -O                     ~ 294000
+IBM RS6000/530H, AIX 3.2.5             xlc -O                     ~ 400000
+IBM RS6000/580 , AIX 3.2.0             xlc -O                     ~ 410000
+IBM RS6000/41T , AIX 3.2.5             xlc -O                     ~ 987000
+IBM RS6000/3BT , AIX 4.1.4             xlc -O (Cset++ 3.1.3)      ~1290000
+
+HP B9000/856,       HPUX 9.04          cc -O                      ~1525000
+HP E9000/720,       HPUX 9.01          cc -O                      ~ 579000
+HP A9000/735,       HPUX 9.05          cc -O                      ~1290000
+HP E9000/816,       HPUX 9.04          cc -O                      ~ 987000
+HP C9000/755,       HPUX 9.04          cc -O                      ~1119000
+HP A9000/715-100,   HPUX 9.07          cc -O                      ~1678000
+HP C9000/715-100XC, HPUX 9.05          cc -O                      ~1678000
+HP E9000/712-80,    HPUX 10.01         cc -O                      ~1290000
+HP B9000/826,       HPUX 9.04          cc -O                      ~1290000
+
+DG AV400 , 1 x mc88000, DGUX 5.4R3.10  gcc -O2                    ~ 195000
+DG AV550 , 1 x mc88100, DGUX 5.4R3.10  gcc -O2                    ~ 630000
+DG AV5225, 4 x mc88000, DGUX 5.4R3.10  gcc -O2                    ~ 266000
+DG AV3000, 2 x i586/100,DGUX 5.4R4.11  gcc -O2                    ~1119000
+DG AV2000, 1 x i586/133,DGUX 5.4R4.11  gcc -O2                    ~1459000
+
+SUN SPARC 10, SunOS 5.5                cc -O (CDS 2.01)           ~ 699000
+
+SGI INDIGO, IRIX 5.3                   cc -O                      ~1049000
+
